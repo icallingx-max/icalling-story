@@ -451,6 +451,96 @@
                 padding: 60px 20px;
             }
         }
+    <!-- Real-time Market Data Script -->
+    <script>
+        // iCalling's Real-time Market Data
+        // Using free APIs: CoinGecko (crypto) + ExchangeRate.host (forex)
+        
+        const CRYPTO_API = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true';
+        const FOREX_API = 'https://api.exchangerate.host/latest?base=USD&symbols=KRW';
+        
+        // Format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        
+        // Format percentage with sign
+        function formatPercent(num) {
+            const sign = num >= 0 ? '+' : '';
+            return sign + num.toFixed(2) + '%';
+        }
+        
+        // Get color for percentage change
+        function getChangeColor(percent) {
+            if (percent > 0) return '#4ecdc4';
+            if (percent < 0) return '#ff6b6b';
+            return '#aaa';
+        }
+        
+        // Fetch crypto prices
+        async function fetchCryptoPrices() {
+            try {
+                const response = await fetch(CRYPTO_API);
+                const data = await response.json();
+                
+                const btc = data.bitcoin;
+                const btcElement = document.getElementById('btc-price');
+                const btcChangeElement = document.getElementById('btc-change');
+                if (btcElement) btcElement.textContent = '$' + formatNumber(btc.usd);
+                if (btcChangeElement) {
+                    btcChangeElement.textContent = formatPercent(btc.usd_24h_change);
+                    btcChangeElement.style.color = getChangeColor(btc.usd_24h_change);
+                }
+                
+                const eth = data.ethereum;
+                const ethElement = document.getElementById('eth-price');
+                if (ethElement) ethElement.textContent = '$' + formatNumber(eth.usd);
+                
+                const sol = data.solana;
+                const solElement = document.getElementById('sol-price');
+                if (solElement) solElement.textContent = '$' + sol.usd.toFixed(2);
+                
+                // Token section
+                const tokenBtcElement = document.getElementById('token-btc-price');
+                const tokenBtcChangeElement = document.getElementById('token-btc-change');
+                if (tokenBtcElement) tokenBtcElement.textContent = '$' + formatNumber(btc.usd);
+                if (tokenBtcChangeElement) {
+                    tokenBtcChangeElement.textContent = formatPercent(btc.usd_24h_change);
+                    tokenBtcChangeElement.style.color = getChangeColor(btc.usd_24h_change);
+                }
+            } catch (error) {
+                console.error('Error fetching crypto prices:', error);
+            }
+        }
+        
+        // Fetch forex rates
+        async function fetchForexRates() {
+            try {
+                const response = await fetch(FOREX_API);
+                const data = await response.json();
+                
+                const krw = data.rates.KRW;
+                const krwElement = document.getElementById('krw-price');
+                if (krwElement) {
+                    krwElement.textContent = '₩' + formatNumber(Math.round(krw));
+                }
+            } catch (error) {
+                console.error('Error fetching forex rates:', error);
+            }
+        }
+        
+        // Initialize
+        async function initMarketData() {
+            await Promise.all([fetchCryptoPrices(), fetchForexRates()]);
+            setInterval(() => {
+                fetchCryptoPrices();
+                fetchForexRates();
+            }, 60000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', initMarketData);
+    </script>
+
     </style>
 </head>
 <body>
@@ -565,10 +655,10 @@
             <h3 style="font-size: 1.3rem; margin-bottom: 15px;">📈 Today's Market Snapshot:</h3>
             
             <ul style="color: #aaa; line-height: 1.8; margin-bottom: 25px; padding-left: 20px;">
-                <li><strong>Bitcoin:</strong> $65,738 <span style="color: #ff6b6b;">(-2.54%)</span></li>
-                <li><strong>Ethereum:</strong> $1,951</li>
-                <li><strong>Solana:</strong> $87.28</li>
-                <li><strong>USD/KRW:</strong> ₩1,429</li>
+                <li><strong>Bitcoin:</strong> <span id="btc-price">$65,738</span> <span id="btc-change" style="color: #ff6b6b;">(-2.54%)</span></li>
+                <li><strong>Ethereum:</strong> <span id="eth-price">$1,951</span></li>
+                <li><strong>Solana:</strong> <span id="sol-price">$87.28</span></li>
+                <li><strong>USD/KRW:</strong> <span id="krw-price">₩1,429</span></li>
             </ul>
             
             <h3 style="font-size: 1.3rem; margin-bottom: 15px;">📰 Key Headlines:</h3>
@@ -659,7 +749,7 @@
         <div class="token-section">
             <h2>Our Token</h2>
             <p class="token-label">$ICALL - The token for our AI ecosystem</p>
-            <div class="token-price">$65,766 <span style="color: #ff6b6b; font-size: 0.7em;">(-2.50%)</span></div>
+            <div class="token-price"><span id="token-btc-price">$65,766</span> <span id="token-btc-change" style="color: #ff6b6b; font-size: 0.7em;">(-2.50%)</span></div>
             <p class="token-label">Bitcoin Price (Live)</p>
         </div>
     </section>
