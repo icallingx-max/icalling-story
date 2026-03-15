@@ -52,17 +52,30 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.logo-text {
     font-size: 1.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.5px;
-}
-
-.logo a {
-    color: inherit;
-    text-decoration: none;
 }
 
 .nav-links {
@@ -91,7 +104,7 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 120px 20px;
+    padding: 120px 20px 60px;
     position: relative;
 }
 
@@ -125,22 +138,121 @@ nav {
     margin-bottom: 40px;
 }
 
-.cta-button {
-    display: inline-flex;
+/* Dashboard Card Button */
+.dashboard-card {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 16px 32px;
-    background: #fff;
-    color: #0a0a0a;
+    gap: 20px;
+    padding: 30px 40px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
     text-decoration: none;
-    font-weight: 600;
-    border-radius: 100px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    color: #fff;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    margin-bottom: 60px;
+    max-width: 500px;
+    width: 100%;
 }
 
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 20px 40px rgba(120, 80, 255, 0.2);
+}
+
+.dashboard-icon {
+    font-size: 2.5rem;
+}
+
+.dashboard-content {
+    flex: 1;
+    text-align: left;
+}
+
+.dashboard-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+}
+
+.dashboard-content p {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
+
+.dashboard-arrow {
+    font-size: 1.5rem;
+    color: #888;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.dashboard-card:hover .dashboard-arrow {
+    transform: translateX(5px);
+    color: #fff;
+}
+
+/* Blog Carousel Section */
+.blog-carousel-section {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+}
+
+.carousel-title {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.blog-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.blog-carousel-item {
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    text-align: left;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.blog-carousel-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.05);
+}
+
+.blog-carousel-item .blog-date {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.blog-carousel-item h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.blog-carousel-item p {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.blog-carousel-item a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.blog-carousel-item a:hover {
+    color: #fff;
 }
 
 /* Sections */
@@ -230,40 +342,108 @@ nav {
     font-size: 0.95rem;
 }
 
-/* News Section */
-.news-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+/* Services Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
-.news-item {
-    padding: 24px;
+.service-card {
+    padding: 40px;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background 0.3s;
+    flex-direction: column;
 }
 
-.news-item:hover {
+.service-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 20px 40px rgba(120, 80, 255, 0.15);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.service-link {
+    color: #888;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.service-card:hover .service-link {
+    color: #fff;
+}
+
+/* Latest News Section */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.news-card {
+    padding: 30px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
     background: rgba(255,255,255,0.05);
 }
 
-.news-title {
-    font-weight: 500;
+.news-category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(120, 80, 255, 0.2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: #a080ff;
+    margin-bottom: 16px;
 }
 
-.news-link {
+.news-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.news-card p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.news-card a {
     color: #888;
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.3s;
 }
 
-.news-link:hover {
+.news-card a:hover {
     color: #fff;
 }
 
@@ -302,12 +482,27 @@ footer {
         display: none;
     }
     
+    .hero {
+        padding: 100px 20px 40px;
+    }
+    
+    .dashboard-card {
+        padding: 20px 24px;
+        margin-bottom: 40px;
+    }
+    
+    .blog-carousel {
+        grid-template-columns: 1fr;
+    }
+    
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
     
-    .vision-grid {
+    .vision-grid,
+    .services-grid,
+    .news-grid {
         grid-template-columns: 1fr;
     }
 }
