@@ -1,0 +1,42 @@
+{
+  "lastUpdated": "Mar 15, 2025 02:05 PM",
+  "usdKrw": {
+    "price": "₩1,495",
+    "change": "+0.3%",
+    "isPositive": true
+  },
+  "btc": {
+    "price": "$71,547",
+    "change": "+0.67%",
+    "isPositive": true
+  },
+  "eth": {
+    "price": "$2,103.5",
+    "change": "+0.55%",
+    "isPositive": true
+  },
+  "wti": {
+    "price": "$98.71",
+    "change": "+3.11%",
+    "isPositive": true
+  },
+  "fearGreed": {
+    "score": 15,
+    "text": "Extreme Fear",
+    "rotation": -63
+  },
+  "headlines": [
+    {
+      "text": "Bitcoin hits new milestone as ETF inflows continue",
+      "url": "https://finance.yahoo.com/quote/BTC-USD"
+    },
+    {
+      "text": "Ethereum Layer 2 solutions see record adoption",
+      "url": "https://finance.yahoo.com/quote/ETH-USD"
+    },
+    {
+      "text": "Oil prices stabilize amid Middle East tensions",
+      "url": "https://finance.yahoo.com/quote/CL=F"
+    }
+  ]
+}

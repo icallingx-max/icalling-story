@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCalling Dashboard</title>
+    <link rel="icon" href="../img/iCalling.64.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../img/icalling.256.jpg" alt="">
+                <span>iCalling</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard/index.html">Dashboard</a></li>
+                <li><a href="https://icallingx.blogspot.com/" target="_blank">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Update Notice -->
+        <div class="update-notice">
+            <p>📅 <strong>Sample Data:</strong> The values below are for demonstration purposes only. For actual market prices, please check <a href="https://finance.yahoo.com" target="_blank" style="color: #92400e; text-decoration: underline;">Yahoo Finance</a>, <a href="https://www.coingecko.com" target="_blank" style="color: #92400e; text-decoration: underline;">CoinGecko</a>, or your preferred financial platform.</p>
+        </div>
+        
+        <!-- Sample Notice -->
+        <div class="update-notice" style="background: #fee2e2; border-left-color: #ef4444;">
+            <p>⚠️ <strong>Not Live Data:</strong> These are placeholder values. Last updated: <span id="lastUpdate">Loading...</span></p>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <img src="../img/icalling.256.jpg" alt="">
+                <h1><span>i</span>Calling Dashboard</h1>
+            </div>
+            <div class="update-info">
+                <div class="update-time">Last Updated: <span id="lastUpdateHeader">Loading...</span></div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- USD/KRW -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">💵</span>
+                    <span class="card-title">USD/KRW Exchange</span>
+                </div>
+                <div class="card-value" id="usdkrw">-</div>
+                <div class="card-change" id="usdkrwChange">-</div>
+            </div>
+            
+            <!-- Bitcoin -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🪙</span>
+                    <span class="card-title">Bitcoin (BTC)</span>
+                </div>
+                <div class="card-value" id="btc">-</div>
+                <div class="card-change" id="btcChange">-</div>
+            </div>
+            
+            <!-- Ethereum -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">💎</span>
+                    <span class="card-title">Ethereum (ETH)</span>
+                </div>
+                <div class="card-value" id="eth">-</div>
+                <div class="card-change" id="ethChange">-</div>
+            </div>
+            
+            <!-- WTI Oil -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🛢️</span>
+                    <span class="card-title">WTI Crude Oil</span>
+                </div>
+                <div class="card-value" id="wti">-</div>
+                <div class="card-change" id="wtiChange">-</div>
+            </div>
+            
+            <!-- Fear & Greed -->
+            <div class="card fear-greed-card">
+                <div class="card-header">
+                    <span class="card-icon">😨😀</span>
+                    <span class="card-title">Fear & Greed Index</span>
+                </div>
+                <div class="gauge-container">
+                    <div>
+                        <div class="gauge">
+                            <div class="gauge-bg"></div>
+                            <div class="gauge-needle" id="gaugeNeedle" style="transform: translateX(-50%) rotate(-45deg);"></div>
+                            <div class="gauge-center"></div>
+                        </div>
+                        <div class="gauge-labels">
+                            <span>Extreme Fear</span>
+                            <span>Neutral</span>
+                            <span>Extreme Greed</span>
+                        </div>
+                    </div>
+                    <div class="fear-greed-value">
+                        <div class="fear-greed-score" id="fearGreedScore">-</div>
+                        <div class="fear-greed-text" id="fearGreedText">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Headlines -->
+        <div class="card headlines-card">
+            <div class="card-header">
+                <span class="card-icon">📰</span>
+                <span class="card-title">Today's Headlines</span>
+            </div>
+            <ul class="headlines-list" id="headlines">
+                <li><span class="headline-text">Loading...</span></li>
+            </ul>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            © 2026 iCalling. Data provided by Yahoo Finance, CoinGecko, Alternative.me.
+        </div>
+    </div>
+    
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
