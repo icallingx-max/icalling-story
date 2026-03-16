@@ -361,9 +361,13 @@ function loadFeaturedPost() {
     }
 }
 
-// Load Recent Posts (3 posts)
+// Load Recent Posts (3 latest posts, excluding featured)
 function loadRecentPosts() {
-    const recent = blogPosts.slice(1, 4); // Next 3 posts after featured
+    // Sort by date (newest first), exclude featured, take top 3
+    const sorted = [...blogPosts]
+        .filter(p => !p.featured)
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+    const recent = sorted.slice(0, 3); // Latest 3 posts
     const container = document.getElementById('recent-posts');
     
     if (container) {
@@ -385,8 +389,11 @@ function loadPostsList() {
     const container = document.getElementById('posts-list');
     if (!container) return;
     
+    // Sort by date (newest first)
+    let sorted = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    
     // Filter by search
-    let filtered = blogPosts;
+    let filtered = sorted;
     if (searchQuery) {
         filtered = blogPosts.filter(p => 
             p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
