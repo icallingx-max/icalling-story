@@ -1,18 +1,18 @@
 {
-  "lastUpdated": "Mar 15, 2025 02:05 PM",
+  "lastUpdated": "Mar 16, 2026 06:46 PM",
   "usdKrw": {
-    "price": "₩1,495",
-    "change": "+0.3%",
+    "price": "₩1,497",
+    "change": "+0.1%",
     "isPositive": true
   },
   "btc": {
-    "price": "$71,547",
-    "change": "+0.67%",
+    "price": "$73,228",
+    "change": "+2.07%",
     "isPositive": true
   },
   "eth": {
-    "price": "$2,103.5",
-    "change": "+0.55%",
+    "price": "$2,255",
+    "change": "+6.58%",
     "isPositive": true
   },
   "wti": {
@@ -21,22 +21,22 @@
     "isPositive": true
   },
   "fearGreed": {
-    "score": 15,
+    "score": 23,
     "text": "Extreme Fear",
-    "rotation": -63
+    "rotation": -55.8
   },
   "headlines": [
     {
-      "text": "Bitcoin hits new milestone as ETF inflows continue",
+      "text": "Bitcoin surges above $73K as institutional interest grows",
       "url": "https://finance.yahoo.com/quote/BTC-USD"
     },
     {
-      "text": "Ethereum Layer 2 solutions see record adoption",
+      "text": "Ethereum jumps 6.5% on ETF optimism",
       "url": "https://finance.yahoo.com/quote/ETH-USD"
     },
     {
-      "text": "Oil prices stabilize amid Middle East tensions",
-      "url": "https://finance.yahoo.com/quote/CL=F"
+      "text": "Market sentiment remains cautious despite crypto gains",
+      "url": "https://alternative.me/crypto/fear-and-greed-index/"
     }
   ]
 }
