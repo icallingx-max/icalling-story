@@ -150,7 +150,7 @@ function loadPostsList() {
     const paginated = filtered.slice(start, start + postsPerPage);
     
     container.innerHTML = paginated.map(post => `
-        <div class="post-item">
+        <div class="post-item" onclick="showPost(${post.id})" style="cursor: pointer;">
             <div class="post-info">
                 <div class="blog-date">${formatDate(post.date)}</div>
                 <h5>${post.title}</h5>
