@@ -342,9 +342,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initPagination();
 });
 
-// Load Featured Post (Latest)
+// Load Featured Post (Latest - most recent date)
 function loadFeaturedPost() {
-    const featured = blogPosts.find(p => p.featured) || blogPosts[0];
+    // Find post with most recent date
+    const sorted = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    const featured = sorted[0];
     const container = document.getElementById('featured-post');
     
     if (container && featured) {
