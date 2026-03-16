@@ -219,13 +219,88 @@ function initPagination() {
     // Already handled in loadPostsList
 }
 
-// Show Post Detail
+// Current viewing post ID
+let currentPostId = null;
+
+// Show Post Detail in Modal
 function showPost(id) {
     const post = blogPosts.find(p => p.id === id);
-    if (post) {
-        alert(`Post: ${post.title}\n\n${post.content}\n\n(Full post view coming soon!)`);
+    if (!post) return;
+    
+    currentPostId = id;
+    
+    // Update modal content
+    document.getElementById('modal-date').textContent = formatDate(post.date);
+    document.getElementById('modal-title').textContent = post.title;
+    
+    // Format content with line breaks
+    const formattedContent = post.content
+        .split('\n')
+        .map(line => {
+            if (line.startsWith('## ')) {
+                return `<h2>${line.replace('## ', '')}</h2>`;
+            } else if (line.startsWith('- ')) {
+                return `<li>${line.replace('- ', '')}</li>`;
+            } else if (line.trim() === '') {
+                return '';
+            } else {
+                return `<p>${line}</p>`;
+            }
+        })
+        .join('');
+    
+    document.getElementById('modal-content').innerHTML = formattedContent;
+    
+    // Update navigation buttons
+    updateModalNav();
+    
+    // Show modal
+    document.getElementById('post-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close Modal
+function closeModal() {
+    document.getElementById('post-modal').classList.remove('active');
+    document.body.style.overflow = '';
+    currentPostId = null;
+}
+
+// Navigate to Previous/Next Post
+function navigatePost(direction) {
+    if (!currentPostId) return;
+    
+    const currentIndex = blogPosts.findIndex(p => p.id === currentPostId);
+    const newIndex = currentIndex + direction;
+    
+    if (newIndex >= 0 && newIndex < blogPosts.length) {
+        showPost(blogPosts[newIndex].id);
     }
 }
+
+// Update Modal Navigation Buttons
+function updateModalNav() {
+    if (!currentPostId) return;
+    
+    const currentIndex = blogPosts.findIndex(p => p.id === currentPostId);
+    
+    document.getElementById('prev-post').disabled = currentIndex === 0;
+    document.getElementById('next-post').disabled = currentIndex === blogPosts.length - 1;
+}
+
+// Close modal on overlay click
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'post-modal') {
+        closeModal();
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
 
 // Format Date
 function formatDate(dateStr) {
