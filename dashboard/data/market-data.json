@@ -1,41 +1,41 @@
 {
-  "lastUpdated": "Mar 16, 2026 06:46 PM",
+  "lastUpdated": "Mar 17, 2026 09:47 AM",
   "usdKrw": {
-    "price": "₩1,497",
-    "change": "+0.1%",
-    "isPositive": true
+    "price": "₩1,491",
+    "change": "-0.4%",
+    "isPositive": false
   },
   "btc": {
-    "price": "$73,228",
-    "change": "+2.07%",
+    "price": "$75,013",
+    "change": "+3.31%",
     "isPositive": true
   },
   "eth": {
-    "price": "$2,255",
-    "change": "+6.58%",
+    "price": "$2,354",
+    "change": "+8.31%",
     "isPositive": true
   },
   "wti": {
-    "price": "$98.71",
-    "change": "+3.11%",
+    "price": "$99.20",
+    "change": "+0.5%",
     "isPositive": true
   },
   "fearGreed": {
-    "score": 23,
-    "text": "Extreme Fear",
-    "rotation": -55.8
+    "score": 28,
+    "text": "Fear",
+    "rotation": -50.4
   },
   "headlines": [
     {
-      "text": "Bitcoin surges above $73K as institutional interest grows",
+      "text": "Bitcoin breaks $75K as institutional adoption accelerates",
       "url": "https://finance.yahoo.com/quote/BTC-USD"
     },
     {
-      "text": "Ethereum jumps 6.5% on ETF optimism",
+      "text": "Ethereum surges 8% on strong ETF inflows",
       "url": "https://finance.yahoo.com/quote/ETH-USD"
     },
     {
-      "text": "Market sentiment remains cautious despite crypto gains",
+      "text": "Crypto sentiment improves but remains in Fear territory",
       "url": "https://alternative.me/crypto/fear-and-greed-index/"
     }
   ]
