@@ -16,9 +16,9 @@
     "isPositive": true
   },
   "wti": {
-    "price": "N/A",
-    "change": "N/A",
-    "isPositive": null
+    "price": "$95.96",
+    "change": "+2.63%",
+    "isPositive": true
   },
   "fearGreed": {
     "score": 28,
